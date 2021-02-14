@@ -119,6 +119,7 @@ func BumpPrerel(ver string) (string, error) {
 		return "", err
 	}
 	if s.Prerelease == "" {
+		s.Patch = s.Patch + 1
 		s.Prerelease = "0"
 		return s.String(), nil
 	}

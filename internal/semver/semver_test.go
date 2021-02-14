@@ -67,7 +67,7 @@ func TestBumpPrerelWithUnversionedPrerelAndMetadata(t *testing.T) {
 }
 func TestBumpPrerelWithoutPrerel(t *testing.T) {
 	ver := "1.0.1"
-	expected := "1.0.1-0"
+	expected := "1.0.2-0"
 	bumped, err := semver.BumpPrerel(ver)
 	if err != nil {
 		panic(err)
