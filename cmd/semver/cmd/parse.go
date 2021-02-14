@@ -16,7 +16,9 @@ limitations under the License.
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
+	"semver/internal/semver"
 
 	"github.com/spf13/cobra"
 )
@@ -32,12 +34,65 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("parse called")
+		sv, _ := semver.ParseSemver(args[0])
+		svs, _ := json.MarshalIndent(sv, "", "  ")
+		fmt.Println(string(svs))
 	},
+}
+
+var bumpMinorCmd = &cobra.Command{
+	Use:   "minor",
+	Short: "Bumps the minor version up by one 1.1.1 -> 1.2.0",
+	Long:  ``,
+	Run: func(cmd *cobra.Command, args []string) {
+		bumped, _ := semver.BumpMinor(args[0])
+		fmt.Println(bumped)
+	},
+}
+
+var bumpPatchCmd = &cobra.Command{
+	Use:   "patch",
+	Short: "Bumps the patch version up by one 1.1.1 -> 1.1.2",
+	Long:  `...`,
+	Run: func(cmd *cobra.Command, args []string) {
+		bumped, _ := semver.BumpPatch(args[0])
+		fmt.Println(bumped)
+	},
+}
+
+var bumpPrerelCmd = &cobra.Command{
+	Use:   "prerel",
+	Short: "Bumps the patch version 1.1.1 -> 1.1.2-0 -> 1.1.2-1",
+	Long:  `...`,
+	Run: func(cmd *cobra.Command, args []string) {
+		bumped, _ := semver.BumpPrerel(args[0])
+		fmt.Println(bumped)
+	},
+}
+
+var bumpMajorCmd = &cobra.Command{
+	Use:   "major",
+	Short: "...",
+	Long:  `...`,
+	Run: func(cmd *cobra.Command, args []string) {
+		bumped, _ := semver.BumpMajor(args[0])
+		fmt.Println(bumped)
+	},
+}
+
+var bumpCmd = &cobra.Command{
+	Use:   "bump",
+	Short: "bump a version",
+	Long:  "bump a version using one of the subcommands [major, minor, patch, prerel]",
 }
 
 func init() {
 	rootCmd.AddCommand(parseCmd)
+	bumpCmd.AddCommand(bumpMinorCmd)
+	bumpCmd.AddCommand(bumpPatchCmd)
+	bumpCmd.AddCommand(bumpPrerelCmd)
+	bumpCmd.AddCommand(bumpMajorCmd)
+	rootCmd.AddCommand(bumpCmd)
 
 	// Here you will define your flags and configuration settings.
 
