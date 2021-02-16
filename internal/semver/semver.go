@@ -90,6 +90,8 @@ func BumpMinor(ver string) (string, error) {
 	}
 	s.Minor = s.Minor + 1
 	s.Patch = 0
+	s.Prerelease = ""
+	s.Metadata = ""
 	return s.String(), nil
 }
 
@@ -103,6 +105,8 @@ func BumpMajor(ver string) (string, error) {
 	s.Major = s.Major + 1
 	s.Minor = 0
 	s.Patch = 0
+	s.Prerelease = ""
+	s.Metadata = ""
 	return s.String(), nil
 }
 
@@ -118,6 +122,7 @@ func BumpPrerel(ver string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	s.Metadata = ""
 	if s.Prerelease == "" {
 		s.Patch = s.Patch + 1
 		s.Prerelease = "0"

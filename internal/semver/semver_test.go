@@ -33,7 +33,7 @@ func TestBumpPatchWithPrerelAndMetadata(t *testing.T) {
 
 func TestBumpPrerelWithPrerelAndMetadata(t *testing.T) {
 	ver := "1.0.1-a20210131.1+myawesomebranch-a01f7f7a"
-	expected := "1.0.1-a20210131.2+myawesomebranch-a01f7f7a"
+	expected := "1.0.1-a20210131.2"
 	bumped, err := semver.BumpPrerel(ver)
 	if err != nil {
 		panic(err)
@@ -45,7 +45,7 @@ func TestBumpPrerelWithPrerelAndMetadata(t *testing.T) {
 
 func TestBumpPrerelWithDottedPrerelAndMetadata(t *testing.T) {
 	ver := "1.0.1-a2021013.1.1+myawesomebranch-a01f7f7a"
-	expected := "1.0.1-a2021013.1.2+myawesomebranch-a01f7f7a"
+	expected := "1.0.1-a2021013.1.2"
 	bumped, err := semver.BumpPrerel(ver)
 	if err != nil {
 		panic(err)
@@ -56,7 +56,7 @@ func TestBumpPrerelWithDottedPrerelAndMetadata(t *testing.T) {
 }
 func TestBumpPrerelWithUnversionedPrerelAndMetadata(t *testing.T) {
 	ver := "1.0.1-a20210131+myawesomebranch-a01f7f7a"
-	expected := "1.0.1-a20210131.0+myawesomebranch-a01f7f7a"
+	expected := "1.0.1-a20210131.0"
 	bumped, err := semver.BumpPrerel(ver)
 	if err != nil {
 		panic(err)
@@ -79,7 +79,7 @@ func TestBumpPrerelWithoutPrerel(t *testing.T) {
 
 func TestBumpMinorWithPrerelAndMetadata(t *testing.T) {
 	ver := "1.0.1-a20210131+myawesomebranch-a01f7f7a"
-	expected := "1.1.0-a20210131+myawesomebranch-a01f7f7a"
+	expected := "1.1.0"
 	bumped, err := semver.BumpMinor(ver)
 	if err != nil {
 		panic(err)
@@ -91,7 +91,7 @@ func TestBumpMinorWithPrerelAndMetadata(t *testing.T) {
 
 func TestBumpMajorWithPrerelAndMetadata(t *testing.T) {
 	ver := "1.0.1-a20210131+myawesomebranch-a01f7f7a"
-	expected := "2.0.0-a20210131+myawesomebranch-a01f7f7a"
+	expected := "2.0.0"
 	bumped, err := semver.BumpMajor(ver)
 	if err != nil {
 		panic(err)
