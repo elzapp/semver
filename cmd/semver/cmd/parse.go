@@ -26,13 +26,8 @@ import (
 // parseCmd represents the parse command
 var parseCmd = &cobra.Command{
 	Use:   "parse",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Parses a semver into it's parts and outputs it as a JSON object",
+	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		sv, _ := semver.ParseSemver(args[0])
 		svs, _ := json.MarshalIndent(sv, "", "  ")
@@ -72,7 +67,7 @@ var bumpPrerelCmd = &cobra.Command{
 
 var bumpMajorCmd = &cobra.Command{
 	Use:   "major",
-	Short: "...",
+	Short: "Bumps the major version 1.1.1 -> 2.0.0",
 	Long:  `...`,
 	Run: func(cmd *cobra.Command, args []string) {
 		bumped, _ := semver.BumpMajor(args[0])
