@@ -1,4 +1,4 @@
-module semver
+module github.com/elzapp/semver
 
 go 1.15
 
