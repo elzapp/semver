@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "semver/cmd/semver/cmd"
+import "github.com/elzapp/semver/cmd/semver/cmd"
 
 func main() {
 	cmd.Execute()

@@ -18,7 +18,8 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
-	"semver/internal/semver"
+
+	"github.com/elzapp/semver/internal/semver"
 
 	"github.com/spf13/cobra"
 )

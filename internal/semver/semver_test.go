@@ -1,9 +1,10 @@
 package semver_test
 
 import (
-	"semver/internal/semver"
 	"strings"
 	"testing"
+
+	"github.com/elzapp/semver/internal/semver"
 )
 
 func TestBumpPatch(t *testing.T) {
